@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🐻 Math Fun!</title>
+  <link rel="stylesheet" href="/src/styles/main.css" />
+</head>
+<body>
+
+  <div class="bg-shapes">
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
+
+  <div class="game-card">
+    <button class="config-gear" id="configGear" title="Settings">⚙️</button>
+    <button class="sound-toggle" id="soundToggle" title="Sound On/Off">🔊</button>
+
+    <h1 class="game-title">🐻 Math Fun!</h1>
+    <p class="game-subtitle">Pick Your Math Adventure! 🧮</p>
+
+    <div class="config-panel" id="configPanel">
+      <form class="config-form" id="configForm" autocomplete="off">
+        <div class="config-row">
+          <span class="config-label">Top Digits:</span>
+          <select class="config-select" id="cfgTopDigits">
+            <option value="1">1 digit (1–9)</option>
+            <option value="2">2 digits (10–99)</option>
+            <option value="3">3 digits (100–999)</option>
+          </select>
+        </div>
+        <div class="config-row">
+          <span class="config-label">Bottom Digits:</span>
+          <select class="config-select" id="cfgBottomDigits">
+            <option value="1">1 digit (1–9)</option>
+            <option value="2">2 digits (10–99)</option>
+            <option value="3">3 digits (100–999)</option>
+          </select>
+        </div>
+        <div class="config-row">
+          <span class="config-label">Type:</span>
+          <select class="config-select" id="cfgType">
+            <option value="add">➕ Addition</option>
+            <option value="sub">➖ Subtraction</option>
+          </select>
+        </div>
+        <div class="config-actions">
+          <button type="button" class="config-btn apply" id="cfgApply">✅ Apply</button>
+          <button type="button" class="config-btn reset" id="cfgReset">🔄 Reset</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="mode-toggle">
+      <button class="mode-btn active add" data-mode="add" id="modeAdd">➕ Addition</button>
+      <button class="mode-btn sub" data-mode="sub" id="modeSub">➖ Subtraction</button>
+      <button class="mode-btn mixed" data-mode="mixed" id="modeMixed">🎲 Mixed</button>
+    </div>
+
+    <div class="score-bar">
+      <div class="score-item">⭐ <span id="score">0</span></div>
+      <div class="score-item streak">🔥 <span id="streak">0</span></div>
+    </div>
+
+    <div class="problem-wrapper" id="problemWrapper">
+      <div class="problem-slide active" id="currentSlide">
+        <div class="problem">
+          <div class="num-row">
+            <span class="op-symbol" id="opSymbol">+</span>
+            <span class="num" id="numTop">0</span>
+          </div>
+          <div class="num-row">
+            <span class="op-symbol"></span>
+            <span class="num" id="numBottom">0</span>
+          </div>
+          <div class="divider"></div>
+        </div>
+      </div>
+      <div class="problem-slide next" id="nextSlide">
+        <div class="problem">
+          <div class="num-row">
+            <span class="op-symbol" id="opSymbolNext">+</span>
+            <span class="num" id="numTopNext">0</span>
+          </div>
+          <div class="num-row">
+            <span class="op-symbol"></span>
+            <span class="num" id="numBottomNext">0</span>
+          </div>
+          <div class="divider"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="answer-area">
+      <input type="number" class="answer-input" id="answerInput" placeholder="?" autocomplete="off" inputmode="numeric" />
+      <button class="submit-btn" id="submitBtn">✓ Go!</button>
+    </div>
+
+    <div class="feedback" id="feedback"></div>
+    <button class="reveal-btn" id="revealBtn">👀 Show Answer</button>
+  </div>
+
+  <div id="confetti-container"></div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
