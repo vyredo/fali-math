@@ -6,6 +6,17 @@ function randomNum(digits) {
   return digits === 1 ? rand(1, 9) : rand(min, max);
 }
 
+function resolveDigits(val) {
+  if (val === 'u2') return Math.random() < 0.5 ? 1 : 2;
+  if (val === 'u3') {
+    const r = Math.random();
+    if (r < 0.33) return 1;
+    if (r < 0.66) return 2;
+    return 3;
+  }
+  return parseInt(val, 10) || 1;
+}
+
 function pickDigits(mode) {
   if (mode === 'single') return 1;
   if (mode === 'double') return 2;
@@ -20,8 +31,8 @@ export function generateProblem(config, mode) {
   let d1, d2, chosenMode;
 
   if (config) {
-    d1 = config.topDigits;
-    d2 = config.bottomDigits;
+    d1 = resolveDigits(config.topDigits);
+    d2 = resolveDigits(config.bottomDigits);
     chosenMode = config.type;
   } else if (mode === 'mixed') {
     d1 = pickDigits('mixed');

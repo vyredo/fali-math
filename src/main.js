@@ -71,6 +71,7 @@ function handleSubmit() {
       await slideToNext();
       finishTransition();
       clearFeedback();
+      setAnswerInputValue('');
       enableInputs();
       focusAnswerInput();
     }, 2200);
@@ -106,8 +107,8 @@ function toggleConfigPanel() {
 
 function handleApplyConfig() {
   const cfg = {
-    topDigits: parseInt($cfgTopDigits.value, 10),
-    bottomDigits: parseInt($cfgBottomDigits.value, 10),
+    topDigits: $cfgTopDigits.value,
+    bottomDigits: $cfgBottomDigits.value,
     type: $cfgType.value,
   };
   configOpen = false;
@@ -150,6 +151,10 @@ function handleModeSwitch(mode) {
 $submitBtn.addEventListener('click', handleSubmit);
 $answerInput.addEventListener('keydown', (e) => {
   handleKeypress(e);
+  if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
+    e.preventDefault();
+    return;
+  }
   if (e.key === 'Enter') {
     e.preventDefault();
     handleSubmit();
